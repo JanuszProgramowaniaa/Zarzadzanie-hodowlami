@@ -1,5 +1,6 @@
 import React from 'react'
 import {Farm} from '../Components/Farm'
+import {Newfarm} from '../Components/Newfarm'
 const Hodowle=() =>{
     const ContainerStyle={display:"flex" ,width:"100%" , flexDirection: "row" ,alignItems: "flex-start", justifyContent: "center" ,flexWrap:"wrap"}
 
@@ -43,7 +44,7 @@ let Dane=[
 <div  style={ContainerStyle}>
     
     {Dane.map(items => <Farm Title={items[0]} image={items[1]}  description={items[2]} />)}
-
+   <Newfarm/>
   </div>
     
         
