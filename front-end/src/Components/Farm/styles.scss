@@ -1,0 +1,23 @@
+.Container{
+    display:flex;
+    width:20%;
+    height: 80wv;
+    justify-content: center;
+    box-shadow: 3px 3px 3px #ccc;
+    margin:10px;
+    flex-direction: column;
+    text-align:center;
+}
+.Title{
+
+    
+ &>h1{
+   font-size: 15px;
+   font-family: monospace;
+   font-weight: bold;
+ }
+}
+
+img{
+     width:100%;
+    }
