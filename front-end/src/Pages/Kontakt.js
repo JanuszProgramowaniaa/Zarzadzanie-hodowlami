@@ -1,15 +1,11 @@
 import React from 'react'
-
+import {Contact} from '../Components/Contact'
 const Kontakt=() =>{
-return(
-    <div style={{display:'flex',
-     justifyContent:'center',
-     alignItems:'center',
-     height:'90vh'
-     }}>
-    <h1>Kontakt</h1>
-    </div>
-)
+    return(
+   
+        <Contact/>
+        
+    )
 
 
 }

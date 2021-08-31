@@ -13,9 +13,7 @@ return(
 </NavLink>
  <Bars/>
  <NavMenu>
- <NavLink to="/Onas" activeStyle>
- O nas
-</NavLink>
+
 <NavLink to="/hodowle" activeStyle>
 Twoje hodowle
 </NavLink>
