@@ -13,21 +13,21 @@ return(
 </NavLink>
  <Bars/>
  <NavMenu>
- <NavLink to="/O nas" activeStyle>
+ <NavLink to="/Onas" activeStyle>
  O nas
 </NavLink>
-<NavLink to="/Twoje hodowle" activeStyle>
+<NavLink to="/hodowle" activeStyle>
 Twoje hodowle
 </NavLink>
-<NavLink to="/Kontakt" activeStyle>
+<NavLink to="/kontakt" activeStyle>
 Kontakt
 </NavLink>
-<NavLink to="/Zaloguj się" activeStyle>
+<NavLink to="/Logowanie" activeStyle>
 Zaloguj się
 </NavLink>
  </NavMenu>
 <NavBtn>
-  <NavBtnLink to='Zarejestruj się'>Zarejestruj się</NavBtnLink>
+  <NavBtnLink to='rejestracja'>Zarejestruj się</NavBtnLink>
 </NavBtn>
 
 </Nav>
