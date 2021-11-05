@@ -6,6 +6,7 @@ import Hodowle from './Pages/Hodowle'
 import Kontakt from './Pages/Kontakt'
 import Logowanie from './Pages/Logowanie'
 import Rejestracja from './Pages/Rejestracja'
+import Desc from './Pages/Desc'
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,11 @@ function App() {
   <Route path='/kontakt' exact component={Kontakt} />
   <Route path='/logowanie' exact component={Logowanie} />
   <Route path='/rejestracja' exact component={Rejestracja} />
+
+  <Route path='/Desc' render={()=>(
+    <Desc name={"hodowla maciorek"} />
+
+  )} />
 </Switch>
       </Router>
     </div>

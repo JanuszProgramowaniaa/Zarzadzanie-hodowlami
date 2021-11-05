@@ -1,13 +1,13 @@
 import React,{useState} from "react"
-import {Grid,Paper,TextField,Button} from '@material-ui/core'
-
+import {Grid,Paper,TextField,Button,Avatar} from '@material-ui/core'
+import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
 
 
 export const Contact = () =>{
   const paperStyle={padding:50,  width:300, margin:"20px auto"}
   const btnStyle={margin:"20px 0"}
   const TextFieldStyle={margin:"20px 0"}
-
+  const avatarStyle={backgroundColor:"green"}
   const [login,setLogin]=useState("")
   const [email,setEmail]=useState("")
   const [message,setMessage]=useState("")
@@ -36,6 +36,7 @@ return(
   <Grid>
     <Paper elevation={10} style={paperStyle}> 
     <Grid align="center"> 
+    <Avatar style={avatarStyle}> <ContactMailOutlinedIcon/> </Avatar>
     <h2>Kontakt</h2>
     </Grid>
    
