@@ -25,7 +25,7 @@ app.use('/api/user',user)
 
 
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
         app.get('*', function(req, res) {
           res.sendFile('index.html', { root: __dirname }, function(err) {
