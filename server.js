@@ -2,7 +2,7 @@ const express = require("express")
 const app =express();
 const mongoose = require("mongoose");
 const path = require('path')
-const user=require('./routes/api/user')
+const apiRouter=require('./routes/api')
 
 //parser
 app.use(express.json());
@@ -17,7 +17,7 @@ mongoose.connect(db)
 .catch(err=>console.log(err));
 
 //Use Routes
-app.use('/api/user',user)
+app.use('/api',apiRouter)
 
 
 
