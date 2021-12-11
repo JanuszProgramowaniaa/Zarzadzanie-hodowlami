@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from "axios"
 export const Register = () =>{
   const paperStyle={padding:50, width:400, margin:"20px auto"}
   const avatarStyle={backgroundColor:"green"}
@@ -14,14 +15,21 @@ export const Register = () =>{
   const btnStyle={margin:"20px 0"}
   const FormControlStyle={margin:"20px 0 0 0"}
 
-  const [login,setLogin]=useState("")
-  const [email,setEmail]=useState("")
-  const [gender,setGender]=useState("")
-  const [telnumber,setTelnumber]=useState("")
-  const [password,setPassword]=useState("")
-  const [confirmpassword,setConfirmPassword]=useState("")
-  const [checkbox,setCheckbox]=useState(false)
-
+  const [isName,setName]=useState("")
+  const [isSurname,setSurname]=useState("")
+  const [isLogin,setLogin]=useState("")
+  const [isEmail,setEmail]=useState("")
+  const [isGender,setGender]=useState("")
+  const [isTelnumber,setTelnumber]=useState("")
+  const [isPassword,setPassword]=useState("")
+  const [isConfirmpassword,setConfirmPassword]=useState("")
+  const [isCheckbox,setCheckbox]=useState(false)
+  const handleChangeName= e =>{
+    setName(e.target.value)
+  }
+  const handleChangeSurname= e =>{
+    setSurname(e.target.value)
+  }
 const handleChangeLogin= e =>{
   setLogin(e.target.value)
 }
@@ -46,16 +54,18 @@ const handleChangeConfirmPassword= e =>{
   setConfirmPassword(e.target.value)
 }
 const handleChangeCheckbox= () =>{
-  setCheckbox(!checkbox)
+  setCheckbox(!isCheckbox)
 }
 
 
 
 
-const wypisz=()=>{
-  const dane=[];
-  dane.push(login,email,gender,telnumber,password,confirmpassword,checkbox);
-alert(dane)
+ const addUser= async ()=>{
+
+  
+ const res= await axios.post('http://localhost:5000/api/user',{Name:isName,Surname:isSurname,Login:isLogin,Password:isPassword})
+  
+
 
 }
 
@@ -68,9 +78,10 @@ return(
     <h2>Rejestracja</h2>
     <Typography style={typographyStyle}>Proszę wypełnij poniższe dane aby utworzyć konto!</Typography>
     </Grid>
-   
-    <TextField label="Login" placeholder="Login" value={login} onChange={handleChangeLogin}  fullWidth required/>
-    <TextField label="E-mail" placeholder="E-mail " type="E-mail" value={email} onChange={handleChangeEmail} fullWidth required/>
+    <TextField label="Name" placeholder="Name" type="text" value={isName} onChange={handleChangeName}  fullWidth required/>
+    <TextField label="Surname" placeholder="Login" type="text" value={isSurname} onChange={handleChangeSurname}  fullWidth required/>
+    <TextField label="Login" placeholder="Login" type="text" value={isLogin} onChange={handleChangeLogin}  fullWidth required/>
+    <TextField label="E-mail" placeholder="E-mail " type="text" value={isEmail} onChange={handleChangeEmail} fullWidth required/>
 
   <FormControl component="fieldset" style={FormControlStyle} >
       <FormLabel component="legend">Płeć</FormLabel>
@@ -80,9 +91,9 @@ return(
       </RadioGroup>
     </FormControl>
 
-    <TextField label="Numer telefonu" placeholder="Numer telefonu" type="Phone Number" fullWidth value={telnumber} onChange={handleChangeTelnumber} />
-    <TextField label="Hasło" placeholder="Hasło " type="password" fullWidth required value={password} onChange={handleChangePassword} />
-    <TextField label="Potwierdź hasło" placeholder="Potwierdź hasło " type="password" fullWidth required value={confirmpassword} onChange={handleChangeConfirmPassword} />
+    <TextField label="Numer telefonu" placeholder="Numer telefonu" type="Phone Number" fullWidth value={isTelnumber} onChange={handleChangeTelnumber} />
+    <TextField label="Hasło" placeholder="Hasło " type="password" fullWidth required value={isPassword} onChange={handleChangePassword} />
+    <TextField label="Potwierdź hasło" placeholder="Potwierdź hasło " type="password" fullWidh required value={isConfirmpassword} onChange={handleChangeConfirmPassword} />
   
     <FormControlLabel
         control={
@@ -95,7 +106,7 @@ return(
         }
         label="Akceptuje regulamin"
       />
-      <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} onClick={wypisz}  >Zarejestruj się</Button>
+      <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} onClick={addUser}  >Zarejestruj się</Button>
 
     </Paper>
  
