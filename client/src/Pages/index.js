@@ -12,10 +12,7 @@ return(
     {({user,logout})=>(
    <div>
 
-        {user
-       ?<div>Witaj {user.name}. <button onClick={logout}>Logout</button></div>
-       :<div>Zaloguj się</div>
-        }
+       Usiądź wygodnie i wejdź w świat o którym nie miałeś pojęcia
 </div>
     )
 

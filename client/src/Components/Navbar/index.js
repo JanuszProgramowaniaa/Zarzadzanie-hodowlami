@@ -2,18 +2,17 @@ import React from "react"
 import styled from 'styled-components'
 import {NavLink as Link} from 'react-router-dom'
 import {FaBars} from 'react-icons/fa'
-
+import { CurrentUserConsumer } from '../../context/CurrentUser.context'
 export const Navbar = () =>{
 return(
-  <>
-
-<Nav>
-<NavLink to="/">
-  <h1>Logo</h1>
+  <CurrentUserConsumer>
+  {({user,logout})=>(
+ <div>
+{user ?
+  <Nav>
+  <NavLink to="/">
+  <h1>Farmnet</h1>
 </NavLink>
- <Bars/>
- <NavMenu>
-
 <NavLink to="/hodowle" activeStyle>
 Twoje hodowle
 </NavLink>
@@ -21,18 +20,36 @@ Twoje hodowle
 Kontakt
 </NavLink>
 <NavLink to="/Logowanie" activeStyle>
+Ustawienia Konta
+</NavLink>
+<div style={{color:'green',verticalAlign:"middle",paddingTop:"20px"}}>Zalogowano:  {user.name} <button style={{borderRadius:"10px",border:"0px"}} onClick={logout}>Wyloguj</button> </div>
+
+</Nav>   
+:
+  <Nav>
+<NavLink to="/">
+  <h1>Farmnet</h1>
+</NavLink>
+ <NavMenu>
+
+<NavLink to="/kontakt" activeStyle>
+Kontakt
+</NavLink>
+<NavLink to="/Logowanie" activeStyle>
 Zaloguj się
 </NavLink>
+
  </NavMenu>
 <NavBtn>
   <NavBtnLink to='rejestracja'>Zarejestruj się</NavBtnLink>
 </NavBtn>
+</Nav>     }
 
-</Nav>
 
 
-</>
-
+</div>
+  )}
+</CurrentUserConsumer>
 
 );
 };
