@@ -7,9 +7,13 @@ import Kontakt from './Pages/Kontakt'
 import Logowanie from './Pages/Logowanie'
 import Rejestracja from './Pages/Rejestracja'
 import Desc from './Pages/Desc'
+import {CurrentUserProvider} from './context/CurrentUser.context'
 function App() {
   return (
+
+
     <div className="App">
+    <CurrentUserProvider>
       <Router >
 <Navbar/>
 <Switch>
@@ -25,7 +29,11 @@ function App() {
   )} />
 </Switch>
       </Router>
+      </CurrentUserProvider>
     </div>
+
+
+
   );
 }
 

@@ -10,7 +10,7 @@ export const Newfarm = (props) =>{
 
 return(
   <div className="Newfarm-Container" >
-  <button>Dodaj nową hodowlę</button>
+  <button onClick={()=>{alert("W produkcji")}}>Dodaj nową hodowlę</button>
 
 
   </div>

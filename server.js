@@ -2,14 +2,10 @@ const express = require("express")
 const app =express();
 const mongoose = require("mongoose");
 const path = require('path')
-
 const user=require('./routes/api/user')
-
 
 //parser
 app.use(express.json());
-
-
 
 //DB COnfig
 const db= require('./config/keys').mongoURI
