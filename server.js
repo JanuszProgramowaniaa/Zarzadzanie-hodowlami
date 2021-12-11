@@ -3,14 +3,14 @@ const app =express();
 const mongoose = require("mongoose");
 const path = require('path')
 const apiRouter=require('./routes/api')
-
+const cors = require('cors');
 //parser
 app.use(express.json());
 
 //DB COnfig
 const db= require('./config/keys').mongoURI
 
-
+app.use(cors())
 //Connect to Mongo
 mongoose.connect(db)
 .then(()=>console.log('MongoDB Connected...'))

@@ -3,6 +3,7 @@ import {Grid,Paper,Avatar,TextField,Button, Typography,Link} from '@material-ui/
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { CurrentUserConsumer } from "../../context/CurrentUser.context";
 
 
 export const Login = () =>{
@@ -10,10 +11,10 @@ export const Login = () =>{
   const avatarStyle={backgroundColor:"green"}
   const typographyStyle={fontSize:"13px"}
   const btnStyle={margin:"20px 0"}
+  const logstyle={margin:"0 auto",textAlign:"center"}
 
-
-  const [login,setLogin]=useState("")
-  const [password,setPassword]=useState("")
+  const [isLogin,setLogin]=useState("")
+  const [isPassword,setPassword]=useState("")
   const [checkbox,setCheckbox]=useState(false)
 
   const handleChangeLogin= e =>{
@@ -27,26 +28,23 @@ export const Login = () =>{
   }
 
 
-  const wypisz=()=>{
-
-    const dane=[];
-    dane.push(login,password,checkbox);
-
-  alert(dane)
   
-  }
 
 return(
-  <Grid>
+<CurrentUserConsumer>
+  {({user,login,error})=>(
+ <div>
+  {!user?
+    <Grid>
     <Paper elevation={10} style={paperStyle}> 
     <Grid align="center"> 
     <Avatar style={avatarStyle}> <LockOutlinedIcon/> </Avatar>
     <h2>Logowanie</h2>
     </Grid>
-   
-    <TextField label="Login" placeholder="Wprowadź Login " fullWidth required value={login} onChange={handleChangeLogin} />
-    <TextField label="Hasło" placeholder="Wprowadź hasło " type="password" fullWidth required value={password} onChange={handleChangePassword} />
 
+    <TextField label="Login" placeholder="Wprowadź Login " fullWidth required value={isLogin} onChange={handleChangeLogin} />
+    <TextField label="Hasło" placeholder="Wprowadź hasło " type="password" fullWidth required value={isPassword} onChange={handleChangePassword} />
+   
     <FormControlLabel
         control={
           <Checkbox
@@ -58,25 +56,28 @@ return(
         }
         label="Zapamiętaj"
       />
-      <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} onClick={wypisz}  >Zaloguj się</Button>
+      <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} onClick={()=>{login(isLogin,isPassword)}}  >Zaloguj się</Button>
+    <div> {error}</div>
 <Typography style={typographyStyle}>
 <Link href="#">
 Zapomniałeś hasła ?
 </Link>
-
-  
 </Typography>
-
 <Typography style={typographyStyle}>Posiadasz konto ?
 <Link href="#">
 Zarejestruj się
 </Link>
-
-  
 </Typography>
     </Paper>
  
   </Grid>
+  :
+  <div style={logstyle}><h1>Już jesteś zalogowany</h1></div>
+  }
+  </div>
+  )}
+
+</CurrentUserConsumer>
 );
 };
 

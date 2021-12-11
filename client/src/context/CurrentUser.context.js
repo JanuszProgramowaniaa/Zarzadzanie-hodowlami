@@ -1,18 +1,46 @@
 import React,{Component} from "react";
-
+import axios from "axios"
 const CurrentUserContext = React.createContext();
 
 export class CurrentUserProvider extends Component{
+
+async fetchUser(Login,Password){
+    const res=await axios.get('http://localhost:5000/api/user/'+Login)
+    const users =res.data
+    if(users!=null){
+        if(users.Password===Password && users.Login===Login )
+  
+    this.setState({user:{name:users.Name}})  
+    }
+  
+ 
+
+
+   
+    
+
+    
+    
+
+}
+
  state={
-     user:null
+     user:null,
+     login:null,
  }
 
- login=() =>{
-     this.setState({user:{name:'Artur'}})
+ login=(Login,Password) =>{
+
+     this.fetchUser(Login,Password)
+
+
+
+
  }
 
 logout =()=>{
-    this.setState({user:null})
+    this.setState({user:null}) 
+    this.setState({error:null}) 
 }
 
 render(){
