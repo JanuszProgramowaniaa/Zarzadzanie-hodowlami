@@ -1,14 +1,8 @@
-import React from 'react'
-import {Login} from '../Components/Login'
+import React from "react";
+import { Login } from "../Components/Login";
 
-const Logowanie=() =>{
-return(
-   
-    <Login/>
-    
-)
+const Logowanie = () => {
+  return <Login />;
+};
 
-
-}
-
-export default Logowanie
+export default Logowanie;

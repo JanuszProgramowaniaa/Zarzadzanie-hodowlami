@@ -1,39 +1,34 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar} from "./Components/Navbar";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Home from './Pages'
-import Hodowle from './Pages/Hodowle'
-import Kontakt from './Pages/Kontakt'
-import Logowanie from './Pages/Logowanie'
-import Rejestracja from './Pages/Rejestracja'
-import Desc from './Pages/Desc'
-import {CurrentUserProvider} from './context/CurrentUser.context'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Navbar } from "./Components/Navbar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Pages";
+import Hodowle from "./Pages/Hodowle";
+import Kontakt from "./Pages/Kontakt";
+import Logowanie from "./Pages/Logowanie";
+import Rejestracja from "./Pages/Rejestracja";
+import Desc from "./Pages/Desc";
+import { CurrentUserProvider } from "./context/CurrentUser.context";
 function App() {
   return (
-
-
     <div className="App">
-    <CurrentUserProvider>
-      <Router >
-<Navbar/>
-<Switch>
-  <Route path='/' exact component={Home} />
-  <Route path='/hodowle' exact component={Hodowle} />
-  <Route path='/kontakt' exact component={Kontakt} />
-  <Route path='/logowanie' exact component={Logowanie} />
-  <Route path='/rejestracja' exact component={Rejestracja} />
+      <CurrentUserProvider>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/hodowle" exact component={Hodowle} />
+            <Route path="/kontakt" exact component={Kontakt} />
+            <Route path="/logowanie" exact component={Logowanie} />
+            <Route path="/rejestracja" exact component={Rejestracja} />
 
-  <Route path='/Desc' render={()=>(
-    <Desc name={"hodowla maciorek"} />
-
-  )} />
-</Switch>
-      </Router>
+            <Route
+              path="/Desc"
+              render={() => <Desc name={"hodowla maciorek"} />}
+            />
+          </Switch>
+        </Router>
       </CurrentUserProvider>
     </div>
-
-
-
   );
 }
 
