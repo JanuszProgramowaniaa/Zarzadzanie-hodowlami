@@ -1,23 +1,27 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const FarmSchema = new Schema({
-  Name: {
+const Unitchema = new Schema({
+  Matka: {
     type: String,
     required: true,
   },
-  ImageUrl: {
+  Ojciec: {
     type: String,
     required: true,
   },
-  Description: {
+  Wiek: {
     type: String,
     required: true,
   },
-  UserId: {
+  Data_Urodzenia: {
+    type: String,
+    required: true,
+  },
+  FarmId: {
     type: String,
     required: true,
   },
 });
 
-module.exports = Farm = mongoose.model("farm", FarmSchema);
+module.exports = Farm = mongoose.model("unit", Unitchema);

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./styles.scss";
-
 export const Farm = (props) => {
   const [desc, SetDesc] = useState(false);
   const description = <div> {props.description} </div>;
+  const image = props.image;
 
   const expand = () => {
     SetDesc(!desc);
@@ -19,7 +19,7 @@ export const Farm = (props) => {
       <NavLink to="/Desc" activeStyle>
         <div className="Image">
           {" "}
-          <img src={props.image} alt="Farm" />{" "}
+          <img src={image} alt="Farm" />{" "}
         </div>
       </NavLink>
 

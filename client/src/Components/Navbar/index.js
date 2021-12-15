@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { CurrentUserConsumer } from "../../context/CurrentUser.context";
 export const Navbar = () => {
+  useEffect(() => {
+    if (localStorage.getItem("user") != undefined) {
+      localStorage.getItem("user");
+    }
+  }, []);
+
   return (
     <CurrentUserConsumer>
       {({ user, logout }) => (
         <div>
+          {localStorage.getItem("user")
+            ? (user = localStorage.getItem("user"))
+            : null}
           {user ? (
             <Nav>
               <NavLink to="/">
