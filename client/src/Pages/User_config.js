@@ -105,6 +105,20 @@ const User_config = () => {
                     </Button>
                   </td>
                 </tr>
+                <tr>
+                  <td colSpan={3}>
+                    <button
+                      style={{ marginBottom: "15px", marginTop: "5px" }}
+                      fullWidth
+                      type="button"
+                      style={btnStyle}
+                      class="btn btn-danger"
+                      onClick={alert}
+                    >
+                      Edytuj hodowle
+                    </button>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

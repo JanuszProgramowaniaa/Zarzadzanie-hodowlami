@@ -24,14 +24,6 @@ app.use("/public/uploads", express.static("public/uploads"));
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("*", function (req, res) {
-  res.sendFile("index.html", { root: __dirname }, function (err) {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
-});
-
 const port = process.env.PORT || 5000;
 
 //Server

@@ -3,7 +3,25 @@ import { NavLink } from "react-router-dom";
 import "./styles.scss";
 export const Farm = (props) => {
   const [desc, SetDesc] = useState(false);
-  const description = <div> {props.description} </div>;
+
+  const Edit = () => {
+    alert();
+  };
+
+  const description = (
+    <div>
+      {" "}
+      {props.description} <br></br>
+      <button
+        style={{ marginBottom: "15px", marginTop: "5px" }}
+        type="button"
+        class="btn btn-success"
+        onClick={Edit}
+      >
+        Edytuj hodowle
+      </button>{" "}
+    </div>
+  );
   const image = props.image;
   const farmId = props.image;
 
