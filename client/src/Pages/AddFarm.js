@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { CurrentUserConsumer } from "../context/CurrentUser.context";
 import { Button } from "@material-ui/core";
 import axios from "axios";
@@ -8,9 +8,9 @@ const Add_farm = () => {
   const [isUserId, setUserId] = useState(localStorage.getItem("id"));
 
   const [isNameform, setNameform] = useState("");
-  const [isImageUrlform, setImageUrlform] = useState("image/krowy.jpg");
-  const [isDescriptionform, setDescriptionform] = useState("");
 
+  const [isDescriptionform, setDescriptionform] = useState("");
+  const imageRef = useRef();
   const handleChangeName = (e) => {
     setNameform(e.target.value);
   };
@@ -20,14 +20,19 @@ const Add_farm = () => {
   };
 
   const addfarm = async () => {
-    await axios.post("http://localhost:5000/api/farm", {
-      Name: isNameform,
-      ImageUrl: isImageUrlform,
-      Description: isDescriptionform,
-      UserId: isUserId,
+    const x = imageRef.current;
+    const formData = new FormData();
+    formData.append("Name", isNameform);
+    formData.append("Description", isDescriptionform);
+    formData.append("image", x.files[0]);
+    formData.append("UserId", isUserId);
+    const res = await axios.post(`http://localhost:5000/api/farm`, formData, {
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
     });
 
-    alert("Dodano nową farme");
+    alert("Dodano pomyślnie hodowle");
   };
 
   return (
@@ -57,7 +62,7 @@ const Add_farm = () => {
                   <th scope="row">Obrazek</th>
 
                   <td>
-                    <input type="file"></input>
+                    <input ref={imageRef} type="file" name="image"></input>
                   </td>
                 </tr>
                 <tr>

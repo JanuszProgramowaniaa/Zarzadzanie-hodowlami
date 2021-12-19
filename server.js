@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const apiRouter = require("./routes/api");
 const cors = require("cors");
+
 //parser
 app.use(express.json());
 
@@ -19,6 +20,7 @@ mongoose
 
 //Use Routes
 app.use("/api", apiRouter);
+app.use("/public/uploads", express.static("public/uploads"));
 
 app.use(express.static(path.join(__dirname, "client/build")));
 

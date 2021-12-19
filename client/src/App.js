@@ -24,10 +24,7 @@ function App() {
             <Route path="/rejestracja" exact component={Rejestracja} />
             <Route path="/User_config" exact component={User_config} />
             <Route path="/Add_farm" exact component={Add_farm} />
-            <Route
-              path="/Desc"
-              render={() => <Desc name={"hodowla maciorek"} />}
-            />
+            <Route path="/Desc/:id" exact component={Desc} />
           </Switch>
         </Router>
       </CurrentUserProvider>

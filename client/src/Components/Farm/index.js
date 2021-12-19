@@ -5,6 +5,7 @@ export const Farm = (props) => {
   const [desc, SetDesc] = useState(false);
   const description = <div> {props.description} </div>;
   const image = props.image;
+  const farmId = props.image;
 
   const expand = () => {
     SetDesc(!desc);
@@ -16,7 +17,7 @@ export const Farm = (props) => {
         <h1>{props.Title}</h1>
       </div>
 
-      <NavLink to="/Desc" activeStyle>
+      <NavLink to={`/Desc/${props.id}`}>
         <div className="Image">
           {" "}
           <img src={image} alt="Farm" />{" "}

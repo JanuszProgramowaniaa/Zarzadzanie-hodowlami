@@ -13,10 +13,13 @@ const Hodowle = () => {
   };
 
   const [isDane, setDane] = useState([]);
+  const image_path = "http://localhost:5000/public/uploads/";
+
   const fetchFarm = async () => {
     const id = localStorage.getItem("id");
     const res = await axios.get("http://localhost:5000/api/farm/" + id);
     const farms = res.data;
+
     setDane(farms);
   };
 
@@ -29,8 +32,9 @@ const Hodowle = () => {
       {isDane.map((items) => (
         <Farm
           Title={items.Name}
-          image={require("../Assets/Images/krowy.jpeg").default}
+          image={image_path + items.ImageUrl}
           description={items.Description}
+          id={items._id}
         />
       ))}
       <Newfarm />

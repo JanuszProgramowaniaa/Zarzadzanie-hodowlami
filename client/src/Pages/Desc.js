@@ -4,6 +4,7 @@ import "./Desc.scss";
 import { useState } from "react";
 import { GlobalFilter } from "./GlobalFilter";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const COLUMNS = [
   {
@@ -51,6 +52,8 @@ const COLUMNS = [
 ];
 
 const Desc = (props) => {
+  const x = useParams();
+  const id = x.id;
   const ContainerStyle = {
     display: "flex",
     width: "100%",
@@ -67,9 +70,7 @@ const Desc = (props) => {
   const data = isData;
 
   const fetchUnits = async () => {
-    const res = await axios.get(
-      "http://localhost:5000/api/unit/" + "61b766ccb536a3d319a8e8aa"
-    );
+    const res = await axios.get("http://localhost:5000/api/unit/" + id);
     const units = res.data;
     setData(units);
   };

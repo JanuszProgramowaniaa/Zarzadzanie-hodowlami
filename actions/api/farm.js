@@ -9,10 +9,9 @@ class FarmActions {
   }
   async saveFarm(req, res) {
     const Name = req.body.Name;
-    const ImageUrl = req.body.ImageUrl;
     const Description = req.body.Description;
     const UserId = req.body.UserId;
-
+    const ImageUrl = req.file.filename;
     let farm;
     try {
       farm = new Farm({ Name, ImageUrl, Description, UserId });
