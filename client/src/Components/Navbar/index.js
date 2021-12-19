@@ -1,23 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 import { FaBars } from "react-icons/fa";
 import { CurrentUserConsumer } from "../../context/CurrentUser.context";
-export const Navbar = () => {
-  useEffect(() => {
-    if (localStorage.getItem("user") != undefined) {
-      localStorage.getItem("user");
-    }
-  }, []);
 
+export const Navbar = () => {
   return (
     <CurrentUserConsumer>
       {({ user, logout }) => (
         <div>
-          {localStorage.getItem("user")
-            ? (user = localStorage.getItem("user"))
-            : null}
-          {user ? (
+          {user || localStorage.getItem("user") ? (
             <Nav>
               <NavLink to="/">
                 <h1>Farmnet</h1>
@@ -28,7 +21,7 @@ export const Navbar = () => {
               <NavLink to="/kontakt" activeStyle>
                 Kontakt
               </NavLink>
-              <NavLink to="/Logowanie" activeStyle>
+              <NavLink to="/User_config" activeStyle>
                 Ustawienia Konta
               </NavLink>
               <div
@@ -38,13 +31,15 @@ export const Navbar = () => {
                   paddingTop: "20px",
                 }}
               >
-                Zalogowano: {user.name}{" "}
-                <button
-                  style={{ borderRadius: "10px", border: "0px" }}
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  fullWidth
                   onClick={logout}
                 >
-                  Wyloguj
-                </button>{" "}
+                  Wyloguj się
+                </Button>
               </div>
             </Nav>
           ) : (

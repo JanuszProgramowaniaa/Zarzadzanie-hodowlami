@@ -6,6 +6,8 @@ import Hodowle from "./Pages/Hodowle";
 import Kontakt from "./Pages/Kontakt";
 import Logowanie from "./Pages/Logowanie";
 import Rejestracja from "./Pages/Rejestracja";
+import User_config from "./Pages/User_config";
+import Add_farm from "./Pages/AddFarm";
 import Desc from "./Pages/Desc";
 import { CurrentUserProvider } from "./context/CurrentUser.context";
 function App() {
@@ -20,7 +22,8 @@ function App() {
             <Route path="/kontakt" exact component={Kontakt} />
             <Route path="/logowanie" exact component={Logowanie} />
             <Route path="/rejestracja" exact component={Rejestracja} />
-
+            <Route path="/User_config" exact component={User_config} />
+            <Route path="/Add_farm" exact component={Add_farm} />
             <Route
               path="/Desc"
               render={() => <Desc name={"hodowla maciorek"} />}

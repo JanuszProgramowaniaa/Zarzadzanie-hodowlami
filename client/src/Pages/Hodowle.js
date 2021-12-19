@@ -14,15 +14,13 @@ const Hodowle = () => {
 
   const [isDane, setDane] = useState([]);
   const fetchFarm = async () => {
-    const res = await axios.get(
-      "http://localhost:5000/api/farm/" + "61b4e7a06d78f8c729730a61"
-    );
+    const id = localStorage.getItem("id");
+    const res = await axios.get("http://localhost:5000/api/farm/" + id);
     const farms = res.data;
     setDane(farms);
   };
 
   useEffect(() => {
-    // Zaktualizuj tytuł dokumentu korzystając z interfejsu API przeglądarki
     fetchFarm();
   }, []);
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Paper, TextField, Button, Avatar } from "@material-ui/core";
 import ContactMailOutlinedIcon from "@material-ui/icons/ContactMailOutlined";
+import emailjs from "emailjs-com";
 
 export const Contact = () => {
   const paperStyle = { padding: 50, width: 300, margin: "20px auto" };
@@ -11,11 +12,13 @@ export const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const wypisz = () => {
+  const send = (e) => {
     const dane = [];
     dane.push(login, email, message);
 
-    alert(dane);
+    //This is important, i'm not sure why, but the email won't send without it
+
+    alert("Wiadomość wysłana :)");
   };
 
   const handleChangeLogin = (e) => {
@@ -75,7 +78,7 @@ export const Contact = () => {
           variant="contained"
           fullWidth
           style={btnStyle}
-          onClick={wypisz}
+          onClick={send}
         >
           Wyślji wiadomość
         </Button>
